@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Nunito', 'Quicksand', 'Segoe UI', sans-serif;
+  background-color: #fce4ec;
+  touch-action: none;
+}
+
+.waiting-screen, .game-over-screen, .selection-screen {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #5d4037;
+  z-index: 10;
+  background: rgba(255,243,224,0.9);
+}
+
+.game-over-screen {
+  background: rgba(255, 205, 210, 0.95);
+}
+
+.game-over-screen h1 {
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+
+/* Character Selection Screen */
+.selection-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.cards-container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.character-card {
+  background: white;
+  border-radius: 30px;
+  padding: 30px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  border: 4px solid transparent;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.2s;
+}
+
+.character-card:hover:not(.disabled) {
+  transform: translateY(-10px) scale(1.05);
+}
+
+.character-card.disabled {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+.card-emoji {
+  font-size: 5rem;
+  margin-bottom: 10px;
+}
+
+.character-card h2 {
+  margin: 10px 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.luke-card h2 { color: #64b5f6; }
+.lucie-card h2 { color: #f06292; }
+
+.character-card p {
+  color: #8d6e63;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.select-btn {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: transform 0.1s, opacity 0.3s;
+}
+
+.select-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.select-btn:disabled {
+  cursor: not-allowed;
+  background: #555;
+  color: #888;
+}
+
+.luke-btn {
+  background: linear-gradient(135deg, #42a5f5, #1976d2);
+  color: white;
+}
+
+.lucie-btn {
+  background: linear-gradient(135deg, #ec407a, #c2185b);
+  color: white;
+}
+
+/* UI Container & Gauges */
+.ui-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.gauges {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.gauge-container {
+  width: 220px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 15px;
+  color: #5d4037;
+  font-weight: 700;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.info-text {
+  font-size: 14px;
+}
+
+.gauge-bar {
+  height: 20px;
+  background: #333;
+  border-radius: 10px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.gauge-fill {
+  height: 100%;
+  transition: width 0.1s linear;
+}
+
+.gauge-energie .gauge-fill {
+  background: linear-gradient(90deg, #ff8a80, #b9f6ca);
+}
+
+.gauge-crepe .gauge-fill {
+  background: linear-gradient(90deg, #ffe082, #ffb300);
+}
+
+.actions {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  pointer-events: auto;
+}
+
+.action-btn {
+  background: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #5d4037;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+.action-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.action-btn:active {
+  transform: translateY(2px) scale(0.95);
+}
+
+.action-machine { background: #b3e5fc; color: #5d4037; }
+.action-armoire { background: #dcedc8; color: #5d4037; }
+
+/* Mini-jeu Crêpe */
+.crepe-modal-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.crepe-modal {
+  background: white;
+  padding: 40px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  color: #5d4037;
+}
+
+.crepe-modal h2 { margin-top: 0; font-size: 2rem; color: #ff9800; }
+.crepe-modal p { font-size: 1.1rem; color: #8d6e63; margin-bottom: 30px; }
+
+.pan-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pan-handle {
+  position: absolute;
+  width: 120px;
+  height: 30px;
+  background: #3e2723;
+  border-radius: 15px;
+  top: 50%;
+  right: -80px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.pan-base {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: #212121;
+  border: 10px solid #424242;
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.batter-fill {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, #fff59d 0%, #ffca28 100%);
+  border-radius: 50%;
+  transition: transform 0.1s linear;
+  transform-origin: center;
+}
+
+.batter-progress-text {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ff9800;
+  margin-top: 20px;
+}
+
+.role-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-50px) scale(1.5); opacity: 0; }
+}
+
+.kiss-anim {
+  font-size: 40px;
+  animation: floatUp 1.5s ease-out forwards;
+  pointer-events: none;
+}
+
+.speech-bubble {
+  position: relative;
+  background: white;
+  border-radius: 15px;
+  padding: 10px 15px;
+  color: #d32f2f;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  white-space: nowrap;
+  pointer-events: none;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
