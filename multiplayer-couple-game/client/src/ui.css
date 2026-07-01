@@ -419,3 +419,139 @@ html, body, #root {
     font-size: 1.5rem;
   }
 }
+
+/* Mobile Landscape Adjustments */
+@media (max-height: 500px) {
+  .ui-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .gauges {
+    padding: 5px;
+    gap: 5px;
+    flex-direction: row;
+  }
+  
+  .gauge-container {
+    width: 120px;
+    padding: 5px;
+    font-size: 0.75rem;
+  }
+
+  .actions {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    padding: 5px;
+    gap: 5px;
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  .action-btn {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  .joystick-container {
+    bottom: 5px;
+    left: 5px;
+    width: 70px;
+    height: 70px;
+  }
+  
+  .joystick-knob {
+    width: 30px;
+    height: 30px;
+  }
+
+  .role-badge {
+    display: none; /* Hide role badge to save space */
+  }
+}
+
+
+/* Joystick styles */
+.joystick-container {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  border: 3px solid rgba(255,255,255,0.5);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.joystick-knob {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .gauges {
+    padding: 10px;
+    gap: 8px;
+  }
+  
+  .gauge-container {
+    width: 140px;
+    padding: 8px;
+    font-size: 0.85rem;
+    border-radius: 12px;
+  }
+  
+  .gauge-bar {
+    height: 12px;
+  }
+  
+  .actions {
+    padding: 10px;
+    gap: 8px;
+    /* Avoid overlapping with joystick which is bottom-left */
+    padding-left: 100px; 
+  }
+  
+  .action-btn {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+    border-radius: 15px;
+  }
+
+  .joystick-container {
+    bottom: 15px;
+    left: 15px;
+    width: 80px;
+    height: 80px;
+  }
+  
+  .joystick-knob {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .role-badge {
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .crepe-modal {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .crepe-modal h2 {
+    font-size: 1.5rem;
+  }
+}

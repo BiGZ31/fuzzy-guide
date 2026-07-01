@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrthographicCamera, OrbitControls, Box, Html } from '@react-three/drei';
+import { OrthographicCamera, Box, Html } from '@react-three/drei';
+import * as THREE from 'three';
 
 function Player({ data, isLocal, gameState }) {
   if (!data.role) return null;
@@ -536,7 +537,23 @@ function KissAnimation({ position }) {
   );
 }
 
+function CameraFollower({ localPlayer }) {
+  useFrame((state) => {
+    if (localPlayer) {
+      // Offset isometrico: decale de (-10, 10, 10) par rapport au joueur
+      const targetPos = new THREE.Vector3(localPlayer.x - 10, 10, localPlayer.z + 10);
+      const lookAtPos = new THREE.Vector3(localPlayer.x, 0, localPlayer.z);
+      
+      state.camera.position.lerp(targetPos, 0.1);
+      state.camera.lookAt(lookAtPos);
+    }
+  });
+  return null;
+}
+
 export default function GameScene({ players, localId, onMove, gameState, kissAnim }) {
+  const localPlayer = players[localId];
+
   return (
     <Canvas shadows>
       <OrthographicCamera 
@@ -547,13 +564,7 @@ export default function GameScene({ players, localId, onMove, gameState, kissAni
         far={100}
       />
       
-      <OrbitControls 
-        enableRotate={false} 
-        enablePan={true} 
-        enableZoom={true} 
-        maxZoom={80} 
-        minZoom={20} 
-      />
+      <CameraFollower localPlayer={localPlayer} />
       
       <ambientLight intensity={1.1} color="#fff5e6" />
       <directionalLight 
