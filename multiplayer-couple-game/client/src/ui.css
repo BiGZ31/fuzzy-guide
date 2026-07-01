@@ -347,7 +347,7 @@ html, body, #root {
 }
 
 /* Joystick styles */
-.joystick-wrapper {
+.joystick-container {
   position: absolute;
   bottom: 30px;
   left: 30px;
@@ -401,7 +401,7 @@ html, body, #root {
     border-radius: 15px;
   }
 
-  .joystick-wrapper {
+  .joystick-container {
     bottom: 15px;
     left: 15px;
   }
@@ -507,7 +507,7 @@ html, body, #root {
     font-size: 0.7rem;
   }
 
-  .joystick-wrapper {
+  .joystick-container {
     bottom: 5px;
     left: 5px;
   }
@@ -524,7 +524,7 @@ html, body, #root {
 
 
 /* Joystick styles */
-.joystick-wrapper {
+.joystick-container {
   position: absolute;
   bottom: 30px;
   left: 30px;
@@ -627,7 +627,7 @@ html, body, #root {
     border-radius: 12px;
   }
 
-  .joystick-wrapper {
+  .joystick-container {
     bottom: 10px;
     left: 10px;
   }
