@@ -66,27 +66,22 @@ function Joystick({ onMove }) {
   return (
     <div
       ref={baseRef}
+      className="joystick-container"
       onMouseDown={onStart} onMouseMove={onDrag} onMouseUp={onEnd} onMouseLeave={onEnd}
       onTouchStart={onStart} onTouchMove={onDrag} onTouchEnd={onEnd}
       style={{
-        position: 'absolute', bottom: '30px', left: '30px',
-        width: '100px', height: '100px', borderRadius: '50%',
-        background: 'rgba(255,255,255,0.25)',
-        border: '3px solid rgba(255,255,255,0.5)',
-        backdropFilter: 'blur(6px)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
         zIndex: 20, cursor: 'grab', userSelect: 'none', touchAction: 'none',
         pointerEvents: 'auto',
       }}
     >
-      <div style={{
-        width: '44px', height: '44px', borderRadius: '50%',
-        background: 'rgba(255,255,255,0.8)',
-        boxShadow: '0 3px 10px rgba(0,0,0,0.3)',
-        transform: `translate(${knobPos.x}px, ${knobPos.y}px)`,
-        transition: isDragging.current ? 'none' : 'transform 0.2s ease',
-        pointerEvents: 'none',
-      }} />
+      <div 
+        className="joystick-knob"
+        style={{
+          transform: `translate(${knobPos.x}px, ${knobPos.y}px)`,
+          transition: isDragging.current ? 'none' : 'transform 0.2s ease',
+          pointerEvents: 'none',
+        }} 
+      />
     </div>
   );
 }
