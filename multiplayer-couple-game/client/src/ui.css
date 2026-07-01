@@ -133,6 +133,16 @@ html, body, #root {
   justify-content: space-between;
 }
 
+.instruction-box {
+  margin-top: 40px;
+  background: rgba(255,255,255,0.9);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  text-align: left;
+  color: #333;
+}
+
 .gauges {
   padding: 20px;
   display: flex;
@@ -422,6 +432,36 @@ html, body, #root {
 
 /* Mobile Landscape Adjustments */
 @media (max-height: 500px) {
+  .selection-screen {
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 10px;
+  }
+  .selection-title {
+    display: none;
+  }
+  .instruction-box {
+    display: none;
+  }
+  .cards-container {
+    gap: 10px;
+  }
+  .character-card {
+    padding: 10px;
+    width: 120px;
+  }
+  .card-emoji {
+    font-size: 2rem;
+    margin-bottom: 5px;
+  }
+  .character-card h2 {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+  .character-card p {
+    display: none;
+  }
+  
   .ui-container {
     flex-direction: row;
     justify-content: space-between;
@@ -431,12 +471,19 @@ html, body, #root {
     padding: 5px;
     gap: 5px;
     flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 250px;
   }
   
   .gauge-container {
-    width: 120px;
-    padding: 5px;
-    font-size: 0.75rem;
+    width: 90px;
+    padding: 4px;
+    font-size: 0.6rem;
+    border-radius: 6px;
+  }
+  
+  .gauge-bar {
+    height: 6px;
   }
 
   .actions {
@@ -450,8 +497,8 @@ html, body, #root {
   }
 
   .action-btn {
-    padding: 8px 12px;
-    font-size: 0.75rem;
+    padding: 6px 10px;
+    font-size: 0.7rem;
   }
 
   .joystick-container {
@@ -498,20 +545,63 @@ html, body, #root {
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
-  .gauges {
+  .selection-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  .cards-container {
+    gap: 15px;
+  }
+  .character-card {
+    padding: 15px;
+    width: 140px;
+  }
+  .card-emoji {
+    font-size: 2.5rem;
+  }
+  .character-card h2 {
+    font-size: 1.2rem;
+  }
+  .character-card p {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+  }
+  .select-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  .instruction-box {
+    margin-top: 15px;
     padding: 10px;
-    gap: 8px;
+    font-size: 0.8rem;
+    max-width: 90%;
+  }
+  .instruction-box h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  .instruction-box p, .instruction-box ul {
+    margin: 5px 0;
+  }
+
+  .gauges {
+    padding: 5px;
+    gap: 5px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
   
   .gauge-container {
-    width: 140px;
-    padding: 8px;
-    font-size: 0.85rem;
-    border-radius: 12px;
+    width: 100px;
+    padding: 4px;
+    font-size: 0.65rem;
+    border-radius: 8px;
   }
   
   .gauge-bar {
-    height: 12px;
+    height: 8px;
+    margin-top: 2px;
   }
   
   .actions {
@@ -522,14 +612,14 @@ html, body, #root {
   }
   
   .action-btn {
-    padding: 10px 15px;
-    font-size: 0.85rem;
-    border-radius: 15px;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    border-radius: 12px;
   }
 
   .joystick-container {
-    bottom: 15px;
-    left: 15px;
+    bottom: 10px;
+    left: 10px;
     width: 80px;
     height: 80px;
   }
@@ -540,18 +630,18 @@ html, body, #root {
   }
   
   .role-badge {
-    top: 10px;
-    right: 10px;
-    padding: 6px 12px;
-    font-size: 0.8rem;
+    top: 5px;
+    right: 5px;
+    padding: 4px 8px;
+    font-size: 0.7rem;
   }
 
   .crepe-modal {
-    padding: 20px;
+    padding: 15px;
     width: 90%;
   }
 
   .crepe-modal h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }

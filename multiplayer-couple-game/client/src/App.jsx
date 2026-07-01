@@ -329,10 +329,10 @@ export default function App() {
           </div>
         </div>
         
-        <div style={{ marginTop: '40px', background: 'rgba(255,255,255,0.9)', padding: '20px', borderRadius: '10px', maxWidth: '600px', textAlign: 'left', color: '#333' }}>
-          <h3 style={{ textAlign: 'center', marginBottom: '10px' }}>📖 Comment Jouer ?</h3>
+        <div className="instruction-box">
+          <h3>📖 Comment Jouer ?</h3>
           <p><strong>Objectif :</strong> Atteignez <strong>300 points</strong> pour sauver votre relation ! Si l'énergie de Lucie tombe à 0 ou que la crêpe refroidit... c'est fini !</p>
-          <ul style={{ marginTop: '10px', paddingLeft: '20px', lineHeight: '1.5' }}>
+          <ul>
             <li><strong>Luke 👦 :</strong> Prépare des crêpes 🍳, du Matcha 🍵, répare la machine 🔧, et pirate des films 💻 en résolvant des énigmes !</li>
             <li><strong>Lucie 👧 :</strong> Ramasse le linge 👕, gère la machine à laver 🧼, et range dans l'armoire 🚪. Mange les crêpes pour regagner de l'énergie !</li>
             <li><strong>Astuce :</strong> Luke, n'oublie pas de faire un bisou 💋 à Lucie pour lui donner de l'énergie gratuite !</li>
@@ -502,14 +502,14 @@ export default function App() {
           
             <div className="gauges">
               <div className="gauge-container gauge-energie">
-                ⚡ Énergie de Lucie
+                ⚡ Énergie
                 <div className="gauge-bar">
                   <div className="gauge-fill" style={{ width: `${Math.max(0, gameState.energieLucie)}%` }}></div>
                 </div>
               </div>
               
               <div className="gauge-container gauge-crepe">
-                🧁 Gourmandise Lucie
+                🧁 Faim
                 <div className="gauge-bar">
                   <div className="gauge-fill" style={{ width: `${Math.max(0, gameState.gourmandiseLucie || 0)}%`, background: 'linear-gradient(90deg, #ff8a80, #ffb300)' }}></div>
                 </div>
@@ -517,7 +517,7 @@ export default function App() {
               
               {gameState.crepePosee && (
                 <div className="gauge-container gauge-crepe">
-                  Température Crêpe
+                  🌡️ Temp. Crêpe
                   <div className="gauge-bar">
                     <div className="gauge-fill" style={{ width: `${Math.max(0, gameState.temperatureCrepe)}%` }}></div>
                   </div>
@@ -525,16 +525,16 @@ export default function App() {
               )}
 
             <div className="gauge-container info-text">
-              🧺 Linge au sol : {gameState.laundriesOnFloor.length} / 10
+              🧺 Linge: {gameState.laundriesOnFloor.length}/10
             </div>
 
             {role === 'Lucie' && localPlayer && (
               <>
                 <div className="gauge-container info-text">
-                  👗 Porté : ⚪ {localPlayer.laundryCarried?.blanc || 0} | 🔴 {localPlayer.laundryCarried?.couleur || 0}
+                  👗 Porté: ⚪ {localPlayer.laundryCarried?.blanc || 0} | 🔴 {localPlayer.laundryCarried?.couleur || 0}
                 </div>
                 <div className="gauge-container info-text">
-                  ✨ Linge propre porté : {localPlayer.cleanLaundryCarried}
+                  ✨ Propre: {localPlayer.cleanLaundryCarried}
                 </div>
               </>
             )}
