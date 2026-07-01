@@ -541,7 +541,9 @@ export default function App() {
           </div>
 
           {/* Joystick Virtuel */}
-          <Joystick onMove={handleJoystickMove} />
+          <div className="joystick-wrapper" style={{ pointerEvents: 'auto' }}>
+            <Joystick size={80} baseColor="rgba(255,255,255,0.25)" stickColor="rgba(255,255,255,0.8)" onMove={handleJoystickMove} />
+          </div>
 
           <div className="actions">
             {role === 'Luke' && (

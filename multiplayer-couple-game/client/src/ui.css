@@ -347,7 +347,7 @@ html, body, #root {
 }
 
 /* Joystick styles */
-.joystick-container {
+.joystick-wrapper {
   position: absolute;
   bottom: 30px;
   left: 30px;
@@ -401,11 +401,9 @@ html, body, #root {
     border-radius: 15px;
   }
 
-  .joystick-container {
+  .joystick-wrapper {
     bottom: 15px;
     left: 15px;
-    width: 80px;
-    height: 80px;
   }
   
   .joystick-knob {
@@ -489,8 +487,9 @@ html, body, #root {
   }
   
   .gauge-bar {
-    height: 4px;
-    margin-top: 2px;
+    height: 10px;
+    margin-top: 4px;
+    background: rgba(0,0,0,0.5);
   }
 
   .actions {
@@ -508,11 +507,9 @@ html, body, #root {
     font-size: 0.7rem;
   }
 
-  .joystick-container {
+  .joystick-wrapper {
     bottom: 5px;
     left: 5px;
-    width: 70px;
-    height: 70px;
   }
   
   .joystick-knob {
@@ -527,7 +524,7 @@ html, body, #root {
 
 
 /* Joystick styles */
-.joystick-container {
+.joystick-wrapper {
   position: absolute;
   bottom: 30px;
   left: 30px;
@@ -612,8 +609,9 @@ html, body, #root {
   }
   
   .gauge-bar {
-    height: 5px;
-    margin-top: 2px;
+    height: 10px;
+    margin-top: 4px;
+    background: rgba(0,0,0,0.5);
   }
   
   .actions {
@@ -629,11 +627,9 @@ html, body, #root {
     border-radius: 12px;
   }
 
-  .joystick-container {
+  .joystick-wrapper {
     bottom: 10px;
     left: 10px;
-    width: 80px;
-    height: 80px;
   }
   
   .joystick-knob {
